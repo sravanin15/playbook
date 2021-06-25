@@ -1,0 +1,16 @@
+---
+  - name: create ec2 instance
+    hosts: local
+    connection: local
+    tasks:
+      - name: provision ec2 instance
+        ec2:
+          instance_type: t2.micro
+          key_name: ubuntuversion
+          image:  ami-0194c3e07668a7e36
+          region: eu-west-2c
+          group: default
+          count: 1
+          vpc_subnet_id: subnet-1fbe9476 
+          wait: yes
+          assign_public_ip: yes
